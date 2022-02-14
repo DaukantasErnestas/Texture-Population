@@ -52,10 +52,11 @@ func _on_Video_pressed():
 	$FileDialog2.popup()
 
 func _on_FileDialog2_file_selected(path):
-	var stream = VideoStreamTheora.new()
-	stream.set_file(path)
-	videoplayer.stream = stream
-	videoplayer.play()
+	if path.right(path.length()-3) == "ogv":
+		var stream = VideoStreamTheora.new()
+		stream.set_file(path)
+		videoplayer.stream = stream
+		videoplayer.play()
 
 func _on_VideoColor_color_changed(color):
 	videoplayer.modulate = color
