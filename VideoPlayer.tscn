@@ -1,0 +1,335 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Touhou-Bad-Apple.ogv" type="VideoStream" id=1]
+[ext_resource path="res://VideoPlayer.tres" type="Material" id=3]
+[ext_resource path="res://Menu.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Helvetica.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=3]
+Label/fonts/font = SubResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+autoplay = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.png" )
+show_hidden_files = true
+current_dir = "/Users"
+current_file = "Users"
+current_path = "/Users/Users"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog2" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.ogv" )
+show_hidden_files = true
+current_dir = "/Users"
+current_file = "Users"
+current_path = "/Users/Users"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -200.0
+theme = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Shader controls"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="BrightnessSlider" type="Control" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 200.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="VBoxContainer/BrightnessSlider"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Brightness:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Brightness" type="SpinBox" parent="VBoxContainer/BrightnessSlider"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 2.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CellSizeSlider" type="Control" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 200.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CellSizeSlider"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Cell size:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CellSize" type="SpinBox" parent="VBoxContainer/CellSizeSlider"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+min_value = 1.0
+max_value = 256.0
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CornerSizeSlider" type="Control" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 200.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CornerSizeSlider"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Corner size:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CornerSize" type="SpinBox" parent="VBoxContainer/CornerSizeSlider"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+max_value = 1.0
+step = 0.01
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Colored" type="CheckButton" parent="VBoxContainer"]
+margin_top = 176.0
+margin_right = 200.0
+margin_bottom = 216.0
+custom_styles/focus = SubResource( 1 )
+text = "Colored:"
+align = 1
+
+[node name="CornerColorPicker" type="Control" parent="VBoxContainer"]
+margin_top = 220.0
+margin_right = 200.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="CornerColor" type="ColorPickerButton" parent="VBoxContainer/CornerColorPicker"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Corner color:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/CornerColorPicker"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Corner color:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexturePicker" type="Control" parent="VBoxContainer"]
+margin_top = 264.0
+margin_right = 200.0
+margin_bottom = 344.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="Label" type="Label" parent="VBoxContainer/TexturePicker"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Texture (*.png):"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="Button" parent="VBoxContainer/TexturePicker"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+text = "Pick a texture"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TexturePreview" type="TextureRect" parent="VBoxContainer/TexturePicker"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 348.0
+margin_right = 200.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 0, 40 )
+text = "Video controls"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Paused" type="CheckButton" parent="VBoxContainer"]
+margin_top = 392.0
+margin_right = 200.0
+margin_bottom = 432.0
+custom_styles/focus = SubResource( 1 )
+text = "Paused:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoColorPicker" type="Control" parent="VBoxContainer"]
+margin_top = 436.0
+margin_right = 200.0
+margin_bottom = 476.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="VideoColor" type="ColorPickerButton" parent="VBoxContainer/VideoColorPicker"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Corner color:"
+color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/VideoColorPicker"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Video color:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPicker" type="Control" parent="VBoxContainer"]
+margin_top = 480.0
+margin_right = 200.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="VBoxContainer/VideoPicker"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Video (*.ogv):"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Button" parent="VBoxContainer/VideoPicker"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_bottom = 20.0
+text = "Pick a video"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_top = 524.0
+margin_right = 200.0
+margin_bottom = 564.0
+rect_min_size = Vector2( 0, 40 )
+text = "(F2 to hide this menu)"
+align = 1
+valign = 1
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="file_selected" from="FileDialog2" to="." method="_on_FileDialog2_file_selected"]
+[connection signal="value_changed" from="VBoxContainer/BrightnessSlider/Brightness" to="." method="_on_Brightness_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/CellSizeSlider/CellSize" to="." method="_on_CellSize_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/CornerSizeSlider/CornerSize" to="." method="_on_CornerSize_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Colored" to="." method="_on_Colored_toggled"]
+[connection signal="color_changed" from="VBoxContainer/CornerColorPicker/CornerColor" to="." method="_on_CornerColor_color_changed"]
+[connection signal="pressed" from="VBoxContainer/TexturePicker/Texture" to="." method="_on_Texture_pressed"]
+[connection signal="toggled" from="VBoxContainer/Paused" to="." method="_on_Paused_toggled"]
+[connection signal="color_changed" from="VBoxContainer/VideoColorPicker/VideoColor" to="." method="_on_VideoColor_color_changed"]
+[connection signal="pressed" from="VBoxContainer/VideoPicker/Video" to="." method="_on_Video_pressed"]
