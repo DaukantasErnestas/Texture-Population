@@ -8,10 +8,14 @@ func _input(event):
 		$VBoxContainer.visible = !$VBoxContainer.visible
 
 func _ready():
+	get_tree().root.connect("size_changed", self, "_on_viewport_size_changed")
 	$VBoxContainer/BrightnessSlider/Brightness.value = videoplayer.material.get_shader_param("brightness")
 	$VBoxContainer/CellSizeSlider/CellSize.value = videoplayer.material.get_shader_param("cell_size")
 	$VBoxContainer/CornerSizeSlider/CornerSize.value = videoplayer.material.get_shader_param("corner_size")
 	$VBoxContainer/Colored.pressed = videoplayer.material.get_shader_param("colored")
+
+func _on_viewport_size_changed():
+	videoplayer.material.set_shader_param("rect_size",get_viewport_rect().size)
 
 func _on_Brightness_value_changed(value):
 	videoplayer.material.set_shader_param("brightness",value)
